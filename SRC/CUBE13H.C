@@ -78,21 +78,21 @@ static void update(void) {
     mtxMulMat3(&rotMat, &tempMat, &rotMatz);
 
     for (i = 0; i < VERTEX_COUNT; i++) {
-        Vec3 rotatedVertex;
-        Vec3 transformedVertex = vertices[i];
+        Vec3 transformedVertex;
+        Vec3 vertex = vertices[i];
 
         // Rotate the vertex around the cube's center
-        mtxMulVec3(&rotatedVertex, &rotMat, &transformedVertex);
+        mtxMulVec3(&transformedVertex, &rotMat, &vertex);
 
         // Translate the vertex away from the camera
-        rotatedVertex.z = rotatedVertex.z - cameraPos.z;
+        transformedVertex.z = transformedVertex.z - cameraPos.z;
 
         // Save transformed vertex in the array of transformed vertices
-        transformedVertices[i] = rotatedVertex;
+        transformedVertices[i] = transformedVertex;
     }
 
     for (i = 0; i < FACE_COUNT; i++) {
-        Vec3 rotatedNormal;
+        Vec3 transformedNormal;
         Face face = faces[i];
 
         faceVertices[0] = transformedVertices[face.a - 1];
@@ -102,10 +102,10 @@ static void update(void) {
         cameraRay = vecSub(&cameraPos, &faceVertices[0]);
 
         // Rotate the face normal
-        mtxMulVec3(&rotatedNormal, &rotMat, &face.normal);
+        mtxMulVec3(&transformedNormal, &rotMat, &face.normal);
         
         // Backface Culling
-        if (vecDot(&rotatedNormal, &cameraRay) < 0) 
+        if (vecDot(&transformedNormal, &cameraRay) < 0) 
             continue;
 
         for (j = 0; j < 3; ++j) {
@@ -128,7 +128,7 @@ static void render(void) {
     int i;
     Triangle* tri;
 
-  	vgaClearOffscreen(0x0);
+    vgaClearOffscreen(0x0);
 
     for (i = 0; i < triangles.count; i++) {
         tri = taAt(&triangles, i);
