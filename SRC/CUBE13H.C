@@ -65,17 +65,17 @@ static void update(void) {
     Vec3 cameraRay;
     Vec3 faceVertices[3];
     Vec3 transformedVertices[VERTEX_COUNT];
-    Mat3 rotMat, tempMat, rotx, roty, rotz;
+    Mat3 rotMat, tempMat, rotMatx, rotMaty, rotMatz;
     Triangle projectedTriangle;
     
     vecSAdd(&cubeRot, 0.02);
 
-    mtxRotx(&rotx, cubeRot.x);
-    mtxRoty(&roty, cubeRot.y);
-    mtxRotz(&rotz, cubeRot.z);
+    mtxRotx(&rotMatx, cubeRot.x);
+    mtxRoty(&rotMaty, cubeRot.y);
+    mtxRotz(&rotMatz, cubeRot.z);
 
-    mtxMulMat3(&tempMat, &rotx, &roty);
-    mtxMulMat3(&rotMat, &tempMat, &rotz);
+    mtxMulMat3(&tempMat, &rotMatx, &rotMaty);
+    mtxMulMat3(&rotMat, &tempMat, &rotMatz);
 
     for (i = 0; i < VERTEX_COUNT; i++) {
         Vec3 rotatedVertex;
