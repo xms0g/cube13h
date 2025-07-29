@@ -70,16 +70,16 @@ static void _waitvretrace(void) {
     asm { cli }
 v1: 
     asm {
-        mov dx, 03dah  
+        mov dx, 0x03da 
         in al, dx      
-        test al, 08h   
+        test al, 0x8   
         jnz v1
     }
 v2:
     asm { 
-        mov dx, 03dah
+        mov dx, 0x03da
         in al, dx
-        test al, 08h
+        test al, 0x8
         jz v2          
         sti
     }
@@ -89,6 +89,6 @@ static void _initMode(int mode) {
     asm {
         xor ah, ah    
         mov ax, mode
-        int 10h
+        int 0x10
     }
 }
