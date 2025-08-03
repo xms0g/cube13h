@@ -53,6 +53,10 @@ static const Vec3 vertices[VERTEX_COUNT] = {
 static void processInput(void) {
     if (kbHit(ESC)) {
         isRunning = 0;
+    } else if (kbHit(L_ARROW)) {
+        cameraPos.x += 0.1; 
+    } else if (kbHit(R_ARROW)) {
+        cameraPos.x -= 0.1; 
     } else if (kbHit(U_ARROW)) {
         cameraPos.z -= 0.1; 
     } else if (kbHit(D_ARROW)) {
@@ -111,7 +115,11 @@ static void update(void) {
         for (j = 0; j < 3; ++j) {
             Vec3 fv = faceVertices[j];
             
-            Vec2 pv = vecProject(&fv, FOV_FACTOR);
+            // Convert points to camera's local coordinate system
+            Vec3 cameraView = vecSub(&fv, &cameraPos);
+            
+            // Project the points onto the screen
+            Vec2 pv = vecProject(&cameraView, FOV_FACTOR);
             pv.x += HALF_WIDTH;
             pv.y += HALF_HEIGHT;
             
@@ -148,9 +156,9 @@ static void render(void) {
 }
 
 void main(void) {
-    cameraPos.x = 0;
-    cameraPos.y = 0;
-	cameraPos.z = 5;
+    cameraPos.x = 0.0;
+    cameraPos.y = 0.0;
+	cameraPos.z = 5.0;
     
     cubeRot.x = 0.0;
     cubeRot.y = 0.0;
