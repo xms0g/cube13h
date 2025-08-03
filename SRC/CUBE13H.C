@@ -18,7 +18,7 @@ static Vec3 cameraPos;
 static TriArray triangles;
 static int isRunning;
 
-static Face faces[FACE_COUNT] = {
+static const Face faces[FACE_COUNT] = {
     // front
     {1, 2, 3, 0x50, {0, 0, -1}},
     {1, 3, 4, 0x51, {0, 0, -1}},
@@ -83,7 +83,7 @@ static void update(void) {
 
     for (i = 0; i < VERTEX_COUNT; i++) {
         Vec3 transformedVertex;
-        Vec3 vertex = vertices[i];
+        const Vec3 vertex = vertices[i];
 
         // Rotate the vertex around the cube's center
         mtxMulVec3(&transformedVertex, &rotMat, &vertex);
@@ -97,7 +97,7 @@ static void update(void) {
 
     for (i = 0; i < FACE_COUNT; i++) {
         Vec3 transformedNormal;
-        Face face = faces[i];
+        const Face face = faces[i];
 
         faceVertices[0] = transformedVertices[face.a - 1];
         faceVertices[1] = transformedVertices[face.b - 1];
@@ -113,10 +113,10 @@ static void update(void) {
             continue;
 
         for (j = 0; j < 3; ++j) {
-            Vec3 fv = faceVertices[j];
+            const Vec3 fv = faceVertices[j];
             
             // Convert points to camera's local coordinate system
-            Vec3 cameraView = vecSub(&fv, &cameraPos);
+            const Vec3 cameraView = vecSub(&fv, &cameraPos);
             
             // Project the points onto the screen
             Vec2 pv = vecProject(&cameraView, FOV_FACTOR);
@@ -134,12 +134,11 @@ static void update(void) {
 
 static void render(void) {
     int i;
-    Triangle* tri;
 
     vgaClearOffscreen(0x0);
 
     for (i = 0; i < triangles.count; i++) {
-        tri = taAt(&triangles, i);
+        const Triangle* tri = taAt(&triangles, i);
 
         // Draw filled triangle
         rndDrawFilledTri(
