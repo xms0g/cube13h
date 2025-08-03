@@ -24,11 +24,12 @@ You can download the `EXE` file from [itch.io](https://ms0g.itch.io/cube13h).
 - **DOSBox** emulator or a real MS-DOS-compatible computer
 
 ## Controls
-- Press the ESC key to exit the application.
+- ESC to exit the application.
+- UP/DOWN to zoom in/zoom out.
+- RIGHT/LEFT to move horizontally.
 
 ## Building from Source
 If you want to build `cube13h` from source, you'll need Turbo C++ and the related [build tools](https://github.com/ms0g/breakout/tree/main/TOOLS/tcpp). 
 
 ## License
-
 This project is licensed under the BSD 3-Clause License. See the LICENSE file for details.
