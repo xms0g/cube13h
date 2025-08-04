@@ -53,14 +53,18 @@ static const Vec3 vertices[VERTEX_COUNT] = {
 static void processInput(void) {
     if (kbHit(ESC)) {
         isRunning = 0;
-    } else if (kbHit(L_ARROW)) {
-        cameraPos.x += 0.1; 
-    } else if (kbHit(R_ARROW)) {
-        cameraPos.x -= 0.1; 
-    } else if (kbHit(U_ARROW)) {
+    } else if (kbHit(W)) {
         cameraPos.z -= 0.1; 
+    } else if (kbHit(S)) {
+        cameraPos.z += 0.1; 
+    } else if (kbHit(A)) {
+        cameraPos.x += 0.1; 
+    } else if (kbHit(D)) {
+        cameraPos.x -= 0.1;
+    } else if (kbHit(U_ARROW)) {
+        cameraPos.y += 0.1;
     } else if (kbHit(D_ARROW)) {
-        cameraPos.z += 0.1;
+        cameraPos.y -= 0.1;
     }
 }
 
