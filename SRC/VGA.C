@@ -20,7 +20,7 @@ void vgaInit(void) {
         asm {
             push es
             les di, offscreen
-            mov ax, 0x00
+            xor ax, ax
             mov cx, 32000
             rep stosw
             pop es
