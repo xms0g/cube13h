@@ -99,15 +99,15 @@ static void update(void) {
         Vec3 transformedNormal;
         const Face face = faces[i];
 
+        // Rotate the face normal
+        mtxMulVec3(&transformedNormal, &rotMat, &face.normal);
+
         faceVertices[0] = transformedVertices[face.a - 1];
         faceVertices[1] = transformedVertices[face.b - 1];
         faceVertices[2] = transformedVertices[face.c - 1];
 
         cameraRay = vecSub(&cameraPos, &faceVertices[0]);
 
-        // Rotate the face normal
-        mtxMulVec3(&transformedNormal, &rotMat, &face.normal);
-        
         // Backface Culling
         if (vecDot(&transformedNormal, &cameraRay) < 0) 
             continue;
