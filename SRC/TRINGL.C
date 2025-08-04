@@ -2,10 +2,12 @@
 #include <stdlib.h>
 
 Vec3 computeNormal(const Vec3* v0, const Vec3* v1, const Vec3* v2) {
-    Vec3 ab = vecSub(v1, v0);
-    Vec3 ac = vecSub(v2, v0);
+    Vec3 ab, ac, normal;
     
-    Vec3 normal = vecCross(&ab, &ac);
+    vecSub(&ab, v1, v0);
+    vecSub(&ac, v2, v0);
+    
+    vecCross(&normal, &ab, &ac);
     vecNormalize(&normal);
 
     return normal;

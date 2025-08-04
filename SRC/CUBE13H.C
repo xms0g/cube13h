@@ -106,20 +106,22 @@ static void update(void) {
         faceVertices[1] = transformedVertices[face.b - 1];
         faceVertices[2] = transformedVertices[face.c - 1];
 
-        cameraRay = vecSub(&cameraPos, &faceVertices[0]);
+        vecSub(&cameraRay, &cameraPos, &faceVertices[0]);
 
         // Backface Culling
         if (vecDot(&transformedNormal, &cameraRay) < 0) 
             continue;
 
         for (j = 0; j < 3; ++j) {
+            Vec2 pv;
+            Vec3 cameraView;
             const Vec3 fv = faceVertices[j];
             
             // Convert points to camera's local coordinate system
-            const Vec3 cameraView = vecSub(&fv, &cameraPos);
+            vecSub(&cameraView, &fv, &cameraPos);
             
             // Project the points onto the screen
-            Vec2 pv = vecProject(&cameraView, FOV_FACTOR);
+            vecProject(&pv, &cameraView, FOV_FACTOR);
             pv.x += HALF_WIDTH;
             pv.y += HALF_HEIGHT;
             

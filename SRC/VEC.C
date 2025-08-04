@@ -19,81 +19,56 @@ void vecSAdd(Vec3* v, const double scalar) {
     v->z += scalar;
 }
 
-Vec2 vecProject(const Vec3* v, const int fov) {
-    Vec2 result = {0, 0};
-    result.x = (fov * v->x) / v->z;
-    result.y = (fov * v->y) / v->z;
-    
-    return result;
+void vecProject(Vec2* out, const Vec3* v, const int fov) {
+    out->x = (fov * v->x) / v->z;
+    out->y = (fov * v->y) / v->z;
 }
 
-Vec3 vecRotx(const Vec3* v, const double angle) {
+void vecRotx(Vec3* out, const Vec3* v, const double angle) {
     double cosA = cos(angle);
     double sinA = sin(angle);
-    Vec3 result = {0, 0, 0};
 
-    result.x = v->x;
-    result.y = v->y * cosA - v->z * sinA;
-    result.z = v->y * sinA + v->z * cosA;
-   
-    return result;
+    out->x = v->x;
+    out->y = v->y * cosA - v->z * sinA;
+    out->z = v->y * sinA + v->z * cosA;
 }
 
-Vec3 vecRoty(const Vec3* v, const double angle) {
+void vecRoty(Vec3* out, const Vec3* v, const double angle) {
     double cosA = cos(angle);
     double sinA = sin(angle);
-    Vec3 result = {0, 0, 0};
 
-    result.x = v->x * cosA - v->z * sinA;
-    result.y = v->y;
-    result.z = v->x * sinA + v->z * cosA;
-   
-    return result;
+    out->x = v->x * cosA - v->z * sinA;
+    out->y = v->y;
+    out->z = v->x * sinA + v->z * cosA;
 }
 
-Vec3 vecRotz(const Vec3* v, const double angle) {
+void vecRotz(Vec3* out, const Vec3* v, const double angle) {
     double cosA = cos(angle);
     double sinA = sin(angle);
-    Vec3 result = {0, 0, 0};
-
-    result.x = v->x * cosA - v->y * sinA;
-    result.y = v->x * sinA + v->y * cosA;
-    result.z = v->z;
    
-    return result;
+    out->x = v->x * cosA - v->y * sinA;
+    out->y = v->x * sinA + v->y * cosA;
+    out->z = v->z;
 }
 
-Vec3 vecAdd(const Vec3* v0, const Vec3* v1) {
-    Vec3 result = {0, 0, 0};
-
-    result.x = v0->x + v1->x;
-    result.y = v0->y + v1->y;
-    result.z = v0->z + v1->z;
-
-    return result;
+void vecAdd(Vec3* out, const Vec3* v0, const Vec3* v1) {
+    out->x = v0->x + v1->x;
+    out->y = v0->y + v1->y;
+    out->z = v0->z + v1->z;
 }
 
-Vec3 vecSub(const Vec3* v0, const Vec3* v1) {
-    Vec3 result = {0, 0, 0};
-
-    result.x = v0->x - v1->x;
-    result.y = v0->y - v1->y;
-    result.z = v0->z - v1->z;
-
-    return result;
+void vecSub(Vec3* out, const Vec3* v0, const Vec3* v1) {
+    out->x = v0->x - v1->x;
+    out->y = v0->y - v1->y;
+    out->z = v0->z - v1->z;
 }
 
 double vecDot(const Vec3* v0, const Vec3* v1) {
     return v0->x * v1->x + v0->y * v1->y + v0->z * v1->z;
-
 }
 
-Vec3 vecCross(const Vec3* v0, const Vec3* v1) {
-    Vec3 result = {0, 0, 0};
-
-    result.x = v0->y * v1->z - v0->z * v1->y;
-    result.y = v0->z * v1->x - v0->x * v1->z;
-    result.z = v0->x * v1->y - v0->y * v1->x;
-
-    return result;
+void vecCross(Vec3* out, const Vec3* v0, const Vec3* v1) {
+    out->x = v0->y * v1->z - v0->z * v1->y;
+    out->y = v0->z * v1->x - v0->x * v1->z;
+    out->z = v0->x * v1->y - v0->y * v1->x;
 }
