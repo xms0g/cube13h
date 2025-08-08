@@ -6,29 +6,21 @@ You can download the `EXE` file from [itch.io](https://ms0g.itch.io/cube13h).
 ![cube13h](IMG/cube13h.gif)
 
 ## Features
-
-| Feature                                | Description                                 |
-|----------------------------------------|---------------------------------------------|
-| Triangle rasterization                 | Fills triangle faces on the cube            |
-| 3D vertex transformations              | Applies rotation and movement               |
-| Perspective projection                 | Simulates depth perception                  |
-| Backface culling                       | Hides faces pointing away from the camera   |
-| Bresenham's line algorithm             | Draws cube edges pixel by pixel             |
-| Double buffering                       | Prevents flickering and tearing             |
-
-
-## Prerequisites
-- **Turbo C++** (`TCC.EXE`) version 3.0 or later  
-- **Turbo Assembler** (`TASM.EXE`) version 4.1 or later  
-- **Turbo Linker** (`TLINK.EXE`) version 5.0 or later  
-- **DOSBox** emulator or a real MS-DOS-compatible computer
+- **Triangle rasterization:** Fills triangle faces on the cube
+- **3D vertex transformations:** Applies rotation and movement
+- **Perspective projection:** Simulates depth perception
+- **Backface culling:** Hides faces pointing away from the camera
+- **Bresenham's line algorithm:** Draws cube edges pixel by pixel
+- **Double buffering:** Prevents flickering and tearing
 
 ## Controls
-- `WASD`: Move
-- `↑ ↓`: Fly up/down
-- `ESC`: Exit
+| Key  | Description |
+|------|-------------|
+|`WASD`|Move         |
+|`↑ ↓` |Fly up/down  |
+|`ESC` |Exit         |
 
-## Building from Source
+## Building
 If you want to build `cube13h` from source, you'll need Turbo C++ and the related [build tools](https://github.com/ms0g/breakout/tree/main/TOOLS/tcpp). 
 
 ## License
