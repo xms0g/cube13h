@@ -1,6 +1,6 @@
-#include "RENDERER.H"
-#include "VGA.H"
-#include "MATH.H"
+#include "renderer.h"
+#include "vga.h"
+#include "math.h"
 
 #define isTopLeft(x0, y0, x1, y1) ((y1 - y0) < 0 || ((y1 - y0) == 0 && (x1 - x0) > 0))
 #define edgeFunction(x0, y0, x1, y1, x2, y2) ((x1 - x0) * (y2 - y0) - (y1 - y0) * (x2 - x0))

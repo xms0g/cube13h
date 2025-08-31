@@ -1,7 +1,7 @@
 #ifndef TRINGL_H
 #define TRINGL_H
 
-#include "VEC.H"
+#include "vec.h"
 
 typedef struct {
     int a;

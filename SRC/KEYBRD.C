@@ -1,4 +1,4 @@
-#include "KEYBRD.H"
+#include "keybrd.h"
 
 #define IRQ_PORT    0x20
 #define KBC_IRQ     0x09

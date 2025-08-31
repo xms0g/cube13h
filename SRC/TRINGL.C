@@ -1,4 +1,4 @@
-#include "TRINGL.H"
+#include "tringl.h"
 #include <stdlib.h>
 
 Vec3 computeNormal(const Vec3* v0, const Vec3* v1, const Vec3* v2) {

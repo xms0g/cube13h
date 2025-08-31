@@ -1,4 +1,4 @@
-#include "MATH.H"
+#include "math.h"
 
 double invSqrt(double n) {
     long i;

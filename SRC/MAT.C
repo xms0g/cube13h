@@ -1,6 +1,5 @@
-#include "MAT.H"
+#include "mat.h"
 #include <math.h>
-#include "VEC.H"
 
 void mtxIdentity(Mat3* out) {
     int i, j;

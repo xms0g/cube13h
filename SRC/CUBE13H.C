@@ -1,9 +1,9 @@
-#include "VEC.H"
-#include "MAT.H"
-#include "VGA.H"
-#include "TRINGL.H"
-#include "KEYBRD.H"
-#include "RENDERER.H"
+#include "vec.h"
+#include "mat.h"
+#include "vga.h"
+#include "tringl.h"
+#include "keybrd.h"
+#include "renderer.h"
 
 #define WIDTH 320
 #define HEIGHT 200

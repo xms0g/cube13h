@@ -1,7 +1,7 @@
 #ifndef MAT_H
 #define MAT_H
 
-#include "VEC.H"
+#include "vec.h"
 
 typedef struct {
     double m[3][3];

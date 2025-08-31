@@ -1,5 +1,5 @@
-#include "VEC.H"
-#include "MATH.H"
+#include "vec.h"
+#include "math.h"
 
 void vecNormalize(Vec3* v) {
     double length = vecInvLen(v);

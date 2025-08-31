@@ -1,4 +1,4 @@
-#include "VGA.H"
+#include "vga.h"
 #include <malloc.h>
 // VGA Graphics Mode
 #define VGA_MODE_13H 0x13
