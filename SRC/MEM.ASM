@@ -11,16 +11,10 @@ __memsetw proc
     mov bp, sp
 
     push es
-    push di
-    push cx
-
     les di, [bp+4]
     mov ax, [bp+8]
     mov cx, [bp+10]
     rep stosw
-
-    pop cx
-    pop di
     pop es
     
     mov ax, [bp+4]    ; offset part of dest
@@ -40,16 +34,12 @@ __memcpyw proc
 
     push ds
     push es
-    push di
-    push cx
     
     les di, [bp+4]
     lds si, [bp+8]
     mov cx, [bp+12]
     rep movsw
-
-    pop cx
-    pop di
+    
     pop es
     pop ds
     
