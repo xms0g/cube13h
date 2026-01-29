@@ -1,5 +1,5 @@
 #include "mat.h"
-#include <math.h>
+#include "math.h"
 
 void mtxIdentity(Mat3* out) {
     int i, j;
@@ -13,8 +13,8 @@ void mtxRotz(Mat3* out, double angle) {
     // | c -s  0 |
     // | s  c  0 |
     // | 0  0  1 |
-    double c = cos(angle);
-    double s = sin(angle);
+    double c = cosLUT(angle);
+    double s = sinLUT(angle);
     
     mtxIdentity(out);
     
@@ -28,8 +28,8 @@ void mtxRoty(Mat3* out, double angle) {
     // |  c  0  s |
     // |  0  1  0 |
     // | -s  0  c |
-    double c = cos(angle);
-    double s = sin(angle);
+    double c = cosLUT(angle);
+    double s = sinLUT(angle);
     
     mtxIdentity(out);
     
@@ -43,8 +43,8 @@ void mtxRotx(Mat3* out, double angle) {
     // | 1  0  0 |
     // | 0  c -s |
     // | 0  s  c |
-    double c = cos(angle);
-    double s = sin(angle);
+    double c = cosLUT(angle);
+    double s = sinLUT(angle);
     
     mtxIdentity(out);
     
