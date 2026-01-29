@@ -3,6 +3,8 @@
 
 #include <math.h>
 
+#define TWO_PI 6.283185307179586
+
 #define absf(v) (v < 0 ? 0 - v : v)
 
 #define ceilf(v) ((int)v + 1)
@@ -18,5 +20,11 @@
 #define max(n0, n1) (n1 ^ ((n0 ^ n1) & -(n0 > n1)))
 
 double invSqrt(double n);
+
+void initSinCosLUT(void);
+
+double sinLUT(double angle);
+
+double cosLUT(double angle);
 
 #endif

@@ -1,5 +1,6 @@
 #include "vec.h"
 #include "mat.h"
+#include "math.h"
 #include "vga.h"
 #include "tringl.h"
 #include "keybrd.h"
@@ -77,6 +78,10 @@ static void update(void) {
     Triangle projectedTriangle;
     
     vecSAdd(&cubeRot, 0.02);
+
+    if (cubeRot.x >= TWO_PI) cubeRot.x -= TWO_PI;
+    if (cubeRot.y >= TWO_PI) cubeRot.y -= TWO_PI;
+    if (cubeRot.z >= TWO_PI) cubeRot.z -= TWO_PI;
 
     mtxRotx(&rotMatx, cubeRot.x);
     mtxRoty(&rotMaty, cubeRot.y);
@@ -175,6 +180,7 @@ void main(void) {
     kbInit();
 
 	taInit(&triangles, 2);
+    initSinCosLUT();
     
 	while (isRunning) {
         processInput();
